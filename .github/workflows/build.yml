@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: bruce-firmware
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -29,4 +32,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: firmware-esp32-s3
-          path: .pio/build/esp32-s3-st7735/firmware.bin
+          path: bruce-firmware/.pio/build/esp32-s3-st7735/firmware.bin
