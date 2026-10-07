@@ -25,6 +25,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install platformio
 
+      - name: Install Stable FastLED
+        run: pio pkg install --library "fastled/FastLED@^3.6.0"
+
       - name: Run PlatformIO Build
         run: pio run -e esp32-s3-st7735
 
