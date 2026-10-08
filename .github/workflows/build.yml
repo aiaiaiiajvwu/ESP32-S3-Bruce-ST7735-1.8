@@ -25,10 +25,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install platformio
 
-      - name: Override FastLED Library
+      - name: Set FastLED Version
         run: |
-          mkdir -p .pio/libdeps/esp32-s3-st7735
-          pio pkg install --owner "fastled" --name "FastLED" --version "3.6.0" -e esp32-s3-st7735
+          sed -i 's/FastLED/fastled\/FastLED@3.6.0/g' platformio.ini
 
       - name: Run PlatformIO Build
         run: pio run -e esp32-s3-st7735
