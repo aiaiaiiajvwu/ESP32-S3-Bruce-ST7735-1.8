@@ -25,9 +25,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install platformio
 
-      - name: Fix FastLED Version in platformio.ini
+      - name: Disable FastLED from Build
         run: |
-          sed -i 's/fastled\/FastLED @\^3.10.3/fastled\/FastLED @ 3.6.0/g' platformio.ini
+          sed -i '/fastled\/FastLED/d' platformio.ini
+          echo "lib_ignore = FastLED" >> platformio.ini
 
       - name: Run PlatformIO Build
         run: pio run -e esp32-s3-st7735
